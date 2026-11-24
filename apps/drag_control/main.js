@@ -51,10 +51,10 @@ module.exports = function initDragConfig(ctx) {
         state.alive = (state.alive + 1) & 0x0F;
         const frame = Buffer.alloc(8, 0x00);
 
-        frame = 0xF0 | state.alive;  // Byte 1: Brake switch pressed + alive counter
-        frame = 0x55;                // Byte 2: Spoofed ~85 bar hydraulic brake pressure
-        frame = 0x04;                // Byte 3: Valid brake pressure plausibility flag
-        frame = calcBmwCrc8(frame);  // Byte 0: Valid BMW CRC-8 checksum
+        frame[1] = 0xF0 | state.alive;  // Byte 1: Brake switch pressed + alive counter
+        frame[2] = 0x55;                // Byte 2: Spoofed ~85 bar hydraulic brake pressure
+        frame[3] = 0x04;                // Byte 3: Valid brake pressure plausibility flag
+        frame[0] = calcBmwCrc8(frame);  // Byte 0: Valid BMW CRC-8 checksum
 
         channel.send({ id: CONFIG.brakeCanId, data: frame });
       }, 10);
@@ -93,7 +93,7 @@ module.exports = function initDragConfig(ctx) {
   // Instant Release when Cruise CANCEL/RES button is pressed
   channel.addListener('onMessage', (msg) => {
     if (state.lcArmed && msg.id === CONFIG.steeringCanId) {
-      if ((msg.data & CONFIG.releaseMask) !== 0) {
+      if ((msg.data[0] & CONFIG.releaseMask) !== 0) {
         setLaunchBypass(false);
       }
     }
@@ -118,4 +118,3 @@ module.exports = function initDragConfig(ctx) {
     });
   });
 };
-
