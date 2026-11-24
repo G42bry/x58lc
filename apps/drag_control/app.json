@@ -1,0 +1,42 @@
+{
+  "id": "drag_control",
+  "name": "Drag Config",
+  "version": "1.0.0",
+  "theme": "m_tricolour",
+  "headerTabs": true,
+  "pages": [
+    {
+      "id": "launch_tab",
+      "title": "Launch Control",
+      "buttons": [
+        { "id": "btn_arm_lc", "label": "Arm 4700 RPM Bypass", "action": "armLaunch" },
+        { "id": "btn_disarm_lc", "label": "Release / OEM", "action": "disarmLaunch" },
+        { "id": "btn_clear_dtc", "label": "Clear Drivetrain Faults", "action": "clearFaults" }
+      ]
+    },
+    {
+      "id": "xdrive_tab",
+      "title": "xDrive / RWD",
+      "buttons": [
+        { "id": "btn_rwd", "label": "RWD (Burnout Mode)", "action": "setRwd" },
+        { "id": "btn_awd", "label": "xDrive AWD (Launch)", "action": "setAwd" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "releaseTrigger",
+      "label": "Launch Release Trigger",
+      "type": "enum",
+      "options": ["Steering Wheel RES/CANCEL", "Brake Pedal Drop", "Manual Screen Tap"],
+      "default": "Steering Wheel RES/CANCEL"
+    },
+    {
+      "id": "brakeBarTarget",
+      "label": "Spoofed Brake Pressure",
+      "type": "enum",
+      "options": ["65 bar", "80 bar", "95 bar"],
+      "default": "80 bar"
+    }
+  ]
+}
