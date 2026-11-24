@@ -1,7 +1,7 @@
 {
   "id": "drag_control",
-  "name": "Drag Config",
-  "version": "1.0.0",
+  "name": "x58LC",
+  "version": "1.0.1",
   "theme": "m_tricolour",
   "headerTabs": true,
   "pages": [
@@ -9,8 +9,9 @@
       "id": "launch_tab",
       "title": "Launch Control",
       "buttons": [
-        { "id": "btn_arm_lc", "label": "Arm 4700 RPM Bypass", "action": "armLaunch" },
-        { "id": "btn_disarm_lc", "label": "Release / OEM", "action": "disarmLaunch" },
+        { "id": "btn_arm_lc", "label": "Arm LC Bypass", "action": "armLaunch" },
+        { "id": "btn_disarm_lc", "label": "Release / Disarm", "action": "disarmLaunch" },
+        { "id": "btn_toggle_safety", "label": "Toggle 10 PSI Auto-Cutoff", "action": "toggleSafety" },
         { "id": "btn_clear_dtc", "label": "Clear Drivetrain Faults", "action": "clearFaults" }
       ]
     },
@@ -25,18 +26,18 @@
   ],
   "settings": [
     {
-      "id": "releaseTrigger",
-      "label": "Launch Release Trigger",
+      "id": "autoCutoffEnabled",
+      "label": "10 PSI / 2.5s Auto-Cutoff",
       "type": "enum",
-      "options": ["Steering Wheel RES/CANCEL", "Brake Pedal Drop", "Manual Screen Tap"],
-      "default": "Steering Wheel RES/CANCEL"
+      "options": ["ON (Safe Mode)", "OFF (Manual Release Only)"],
+      "default": "ON (Safe Mode)"
     },
     {
-      "id": "brakeBarTarget",
-      "label": "Spoofed Brake Pressure",
+      "id": "boostCutoffPsi",
+      "label": "Auto-Cutoff Boost Target",
       "type": "enum",
-      "options": ["65 bar", "80 bar", "95 bar"],
-      "default": "80 bar"
+      "options": ["8 PSI", "10 PSI", "12 PSI", "15 PSI"],
+      "default": "10 PSI"
     }
   ]
 }
