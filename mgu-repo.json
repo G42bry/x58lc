@@ -1,6 +1,14 @@
 {
   "schema": 1,
   "apps": {
+        {
+      "id": "drag_control",
+      "name": "Drag Config",
+      "version": "1.0.0",
+      "description": "4700 RPM Launch Control Line-Lock Bypass & RWD Mode",
+      "path": "apps/drag_control"
+    },
+
     "path": "apps/*",
     "manifest": "app.json",
     "icon": "icon.png",
