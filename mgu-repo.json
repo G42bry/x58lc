@@ -1,14 +1,6 @@
 {
   "schema": 1,
   "apps": {
-        {
-      "id": "drag_control",
-      "name": "Drag Config",
-      "version": "1.0.0",
-      "description": "4700 RPM Launch Control Line-Lock Bypass & RWD Mode",
-      "path": "apps/drag_control"
-    },
-
     "path": "apps/*",
     "manifest": "app.json",
     "icon": "icon.png",
@@ -18,27 +10,7 @@
       "sdk": "oap-sdk",
       "output": "dist/{id}@{version}.tgz",
       "network": ["doom"],
-      "shared": ["kit/runtime", "kit/platform", "kit/localization", "kit/tools/build.py", "kit/tools/pack_data.py",
-        "kit/tools/localize.py", "kit/tools/locale-revisions.json", "kit/tools/oapgen", "oap-sdk"]
+      "shared": ["kit/runtime", "kit/platform", "kit/localization", "kit/tools/build.py", "kit/tools/localize.py", "kit/tools/locale-revisions.json", "kit/tools/oapgen", "oap-sdk"]
     }
-  },
-  "tools": [
-    {
-      "id": "idrive7-renderd",
-      "path": "kit/renderd/prebuilt",
-      "title": "GPU renderer",
-      "description": "The apps' own GPU renderer (mgu-render): draws them at 60 fps, beside the MGU Store's Renderer; installed with the apps (iDrive 7 and iDrive 8)",
-      "mguHmi": ["ID7", "ID8"]
-    },
-    {
-      "id": "mgu-inputgate",
-      "path": "kit/renderd/inputgate/tool",
-      "title": "Controller gate",
-      "description": "Lets the apps have the iDrive controller (tabs, page buttons, settings, Doom); loads into the HMI at the next start (iDrive 7 and iDrive 8)",
-      "needs": ["renderer"],
-      "optional": false,
-      "uninstallable": true,
-      "mguHmi": ["ID7", "ID8"]
-    }
-  ]
+  }
 }
